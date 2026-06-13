@@ -1,0 +1,14 @@
+{
+  "name": "Raasta - the intelligent travel app for India",
+  "short_name": "Raasta",
+  "description": "Curated trips and multi-stop journeys across India, with real budgets, best seasons and routes.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#FFFFFF",
+  "icons": [
+    { "src": "assets/icon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "assets/icon-180.png", "type": "image/png", "sizes": "180x180" },
+    { "src": "assets/icon-512.png", "type": "image/png", "sizes": "512x512", "purpose": "any maskable" }
+  ]
+}
