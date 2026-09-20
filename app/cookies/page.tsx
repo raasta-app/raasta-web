@@ -1,0 +1,181 @@
+import type { Metadata } from 'next';
+import { LegalHeader, LegalFooter } from '../components/LegalChrome';
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy | Raasta',
+  description: 'Cookie Policy for Raasta, the intelligent travel app for India.',
+  alternates: { canonical: 'https://raasta.app/cookies' },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: 'website',
+    siteName: 'Raasta',
+    title: 'Cookie Policy | Raasta',
+    description: 'How Raasta uses cookies and similar technologies on the website.',
+    url: 'https://raasta.app/cookies',
+    images: [{ url: 'https://raasta.app/assets/og.jpg' }],
+  },
+};
+
+export default function CookiesPage() {
+  return (
+    <div className="legal-page">
+      <a className="skip-link" href="#legal-main">
+        Skip to content
+      </a>
+      <LegalHeader />
+      <main className="legal" id="legal-main">
+        <div className="wrap legal-wrap">
+          <h1>Cookie Policy</h1>
+          <dl className="legal-meta">
+            <div>
+              <dt>Last updated</dt>
+              <dd>13 June 2026</dd>
+            </div>
+            <div>
+              <dt>Website</dt>
+              <dd>
+                <a href="https://raasta.app" target="_blank" rel="noopener">
+                  https://raasta.app
+                </a>
+              </dd>
+            </div>
+            <div>
+              <dt>Contact</dt>
+              <dd>
+                <a href="mailto:hello@raasta.app">hello@raasta.app</a>
+              </dd>
+            </div>
+            <div>
+              <dt>Location</dt>
+              <dd>Delhi, India</dd>
+            </div>
+          </dl>
+          <p>
+            This Cookie Policy explains how Raasta uses cookies and similar technologies on the website at{' '}
+            <a href="https://raasta.app" target="_blank" rel="noopener">
+              https://raasta.app
+            </a>
+            .
+          </p>
+          <p>Raasta is currently a pre-incorporation startup project. The website is a pre-launch landing page with product information and a waitlist form.</p>
+          <p>Raasta does not currently use cookies for bookings, payments, user accounts, marketplace transactions, advertising, retargeting, community features, or live location tracking.</p>
+
+          <h2>1. What Cookies Are</h2>
+          <p>Cookies are small text files placed on your device when you visit a website. They help websites function, remember choices, understand usage, and improve performance.</p>
+          <p>Similar technologies may include browser storage, pixels, tags, scripts, and analytics identifiers.</p>
+
+          <h2>2. How Raasta Uses Cookies</h2>
+          <p>At the current stage, Raasta uses limited cookies and similar technologies for:</p>
+          <ul>
+            <li>basic website operation</li>
+            <li>website performance and analytics</li>
+            <li>understanding how visitors use the landing page</li>
+            <li>improving the waitlist signup experience</li>
+            <li>remembering your cookie consent choice</li>
+          </ul>
+
+          <h2>3. Types of Cookies We Use</h2>
+          <h3>3.1 Essential cookies</h3>
+          <p>Essential cookies are required for basic website operation, security, and functionality.</p>
+          <p>These may be used to load the website, maintain basic security, prevent abuse, or remember your cookie consent choice.</p>
+          <p>Essential cookies cannot usually be disabled through the website because they are needed for the website to work.</p>
+          <h3>3.2 Analytics cookies</h3>
+          <p>Raasta uses Google Analytics 4 to understand website traffic and visitor behaviour.</p>
+          <p>Analytics cookies are set only if you accept analytics in our cookie banner. If you decline, Google Analytics runs in a consent-denied mode that does not store analytics cookies on your device.</p>
+          <p>Analytics cookies may help us understand:</p>
+          <ul>
+            <li>how many people visit the website</li>
+            <li>which pages or sections are viewed</li>
+            <li>how visitors arrive at the website</li>
+            <li>whether visitors interact with the waitlist form</li>
+            <li>what devices and browsers visitors use</li>
+          </ul>
+          <p>We use this information to improve Raasta&apos;s website and launch experience.</p>
+          <h3>3.3 Advertising cookies</h3>
+          <p>Raasta does not currently use advertising cookies, retargeting cookies, Meta Pixel, LinkedIn Insight Tag, or similar advertising tracking tools.</p>
+          <p>If we use advertising or retargeting cookies in the future, we will update this Cookie Policy and, where required, request consent.</p>
+
+          <h2>4. Google Analytics 4 Cookies</h2>
+          <p>Google Analytics 4 may set first-party cookies to distinguish unique users and sessions.</p>
+          <table className="legal-table">
+            <thead>
+              <tr>
+                <th>Cookie</th>
+                <th>Provider</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>_ga</td>
+                <td>Google Analytics</td>
+                <td>Helps distinguish users and sessions for website analytics.</td>
+              </tr>
+              <tr>
+                <td>Cookies beginning with _ga_</td>
+                <td>Google Analytics</td>
+                <td>Help maintain analytics session information for a specific Google Analytics 4 property.</td>
+              </tr>
+            </tbody>
+          </table>
+          <p>The exact cookie duration may depend on the Google Analytics configuration, browser settings, and Google&apos;s current cookie behaviour.</p>
+
+          <h2>5. No Booking or Payment Cookies</h2>
+          <p>Raasta does not currently offer bookings, payments, checkout, subscriptions, accounts, or marketplace services.</p>
+          <p>Therefore, we do not currently use cookies for:</p>
+          <ul>
+            <li>booking sessions</li>
+            <li>checkout</li>
+            <li>payment authentication</li>
+            <li>shopping carts</li>
+            <li>account login</li>
+            <li>subscription billing</li>
+            <li>marketplace transactions</li>
+          </ul>
+
+          <h2>6. Your Cookie Choices</h2>
+          <p>You can control cookies through your browser settings. Most browsers allow you to:</p>
+          <ul>
+            <li>block cookies</li>
+            <li>delete cookies</li>
+            <li>block third-party cookies</li>
+            <li>clear cookies when closing the browser</li>
+            <li>receive alerts before cookies are stored</li>
+          </ul>
+          <p>If you block or delete cookies, some website functions may not work as intended.</p>
+          <p>When you first visit Raasta, a cookie banner lets you accept or decline analytics cookies. Analytics cookies are set only if you accept, and we remember your choice on your device so you are not asked again. You can change your mind later by clearing the site&apos;s storage in your browser, which makes the banner appear again.</p>
+
+          <h2>7. Google Analytics Choices</h2>
+          <p>You may limit Google Analytics tracking by:</p>
+          <ul>
+            <li>declining analytics cookies in our cookie banner</li>
+            <li>changing your browser privacy settings</li>
+            <li>using browser-based privacy tools</li>
+            <li>using Google Analytics opt-out tools where available</li>
+          </ul>
+
+          <h2>8. Changes to This Cookie Policy</h2>
+          <p>We may update this Cookie Policy as the website develops or if we add, remove, or change cookies.</p>
+          <p>If Raasta later launches features such as accounts, bookings, payments, marketplace services, advertising pixels, user-generated content, or location-based features, we will update this Cookie Policy as needed.</p>
+          <p>The updated version will be posted on this page with a new &quot;Last updated&quot; date.</p>
+
+          <h2>9. Contact Us</h2>
+          <p>For questions about this Cookie Policy, contact:</p>
+          <p>
+            Raasta is a pre-incorporation startup project.
+            <br />
+            Website:{' '}
+            <a href="https://raasta.app" target="_blank" rel="noopener">
+              https://raasta.app
+            </a>
+            <br />
+            Email: <a href="mailto:hello@raasta.app">hello@raasta.app</a>
+            <br />
+            Location: Delhi, India
+          </p>
+        </div>
+      </main>
+      <LegalFooter current="cookies" />
+    </div>
+  );
+}
