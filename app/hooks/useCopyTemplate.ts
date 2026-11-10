@@ -2,7 +2,6 @@
 
 import { useEffect } from 'react';
 
-/** Careers "copy application template" button. Ports js/nav.js's copy logic. */
 export function useCopyTemplate() {
   useEffect(() => {
     const copyBtn = document.getElementById('copyTemplate');
@@ -34,7 +33,6 @@ export function useCopyTemplate() {
         document.body.removeChild(ta);
         markCopied();
       } catch {
-        /* no-op */
       }
     };
     const onClick = () => {

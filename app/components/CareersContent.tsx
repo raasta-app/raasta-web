@@ -6,7 +6,6 @@ import Footer from './Footer';
 import { useSubpageScrollNav } from '../hooks/useScrollNav';
 import { useReveal } from '../hooks/useReveal';
 import { useParallax } from '../hooks/useParallax';
-import { useStatementHighlight } from '../hooks/useStatementHighlight';
 import { useCopyTemplate } from '../hooks/useCopyTemplate';
 
 const ROLES = [
@@ -68,7 +67,6 @@ export default function CareersContent() {
   useSubpageScrollNav(navRef, progressRef);
   useReveal();
   useParallax();
-  useStatementHighlight();
   useCopyTemplate();
 
   return (
@@ -77,7 +75,6 @@ export default function CareersContent() {
       <a className="skip-link" href="#main">
         Skip to content
       </a>
-      <div className="progress" id="progress" aria-hidden="true" ref={progressRef}></div>
 
       <SubNav navRef={navRef} current="careers" />
 

@@ -2,43 +2,45 @@
 
 import { useEffect } from 'react';
 
-/**
- * Drives `[data-parallax]` element drift and the full-bleed `.break-img`
- * background parallax. Ports the `runParallax` / `runBreakParallax`
- * functions shared by js/script.js (home) and js/nav.js (sub-pages).
- */
+type Tracked = { el: HTMLElement; centre: number; half: number; speed: number };
+
 export function useParallax() {
   useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduceMotion) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const smallScreen = window.matchMedia('(max-width: 900px)').matches;
-    const parallaxEls = Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]')).filter(
-      (el) => !(smallScreen && el.classList.contains('plan-demo')),
-    );
-    const breakSecs = Array.from(document.querySelectorAll<HTMLElement>('.break-img'));
+    const cssDriven = CSS.supports('animation-timeline: view()');
+    const nodes = cssDriven
+      ? []
+      : Array.from(document.querySelectorAll<HTMLElement>('[data-parallax]')).filter(
+          (el) => !(smallScreen && el.classList.contains('plan-demo')),
+        );
+    if (!nodes.length) return;
 
-    function runParallax(vh: number) {
-      for (const el of parallaxEls) {
-        const rect = el.getBoundingClientRect();
-        if (rect.bottom < 0 || rect.top > vh) continue;
-        const speed = parseFloat(el.dataset.parallax || '0') || 0;
-        const shift = ((rect.top + rect.height / 2 - vh / 2) * -speed).toFixed(1);
-        el.style.transform = `translate3d(0, ${shift}px, 0)`;
-      }
+    let tracked: Tracked[] = [];
+
+    function measure() {
+      for (const el of nodes) el.style.transform = '';
+
+      tracked = nodes.map((el) => {
+        const r = el.getBoundingClientRect();
+        return {
+          el,
+          centre: r.top + window.scrollY + r.height / 2,
+          half: r.height / 2,
+          speed: parseFloat(el.dataset.parallax || '0') || 0,
+        };
+      });
     }
 
-    function runBreakParallax(vh: number) {
-      for (const sec of breakSecs) {
-        const bg = sec.querySelector<HTMLElement>('.break-bg');
-        if (!bg) continue;
-        const r = sec.getBoundingClientRect();
-        if (r.bottom < 0 || r.top > vh) continue;
-        const H = r.height;
-        let prog = (r.top + H / 2 - vh / 2) / (vh / 2 + H / 2);
-        prog = prog < -1 ? -1 : prog > 1 ? 1 : prog;
-        const shift = (-prog * H * 0.4).toFixed(1);
-        bg.style.transform = `translate3d(0, ${shift}px, 0)`;
+    function draw() {
+      const vh = window.innerHeight;
+      const mid = window.scrollY + vh / 2;
+
+      for (const t of tracked) {
+        const offset = t.centre - mid;
+        if (offset + t.half < -vh / 2 || offset - t.half > vh / 2) continue;
+        t.el.style.transform = `translate3d(0, ${(offset * -t.speed).toFixed(1)}px, 0)`;
       }
     }
 
@@ -47,19 +49,23 @@ export function useParallax() {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
-        const vh = window.innerHeight;
-        runParallax(vh);
-        runBreakParallax(vh);
+        draw();
         ticking = false;
       });
     };
 
-    onScroll();
+    const onResize = () => {
+      measure();
+      draw();
+    };
+
+    measure();
+    draw();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('resize', onResize, { passive: true });
     return () => {
       window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 }

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import CareersContent from '../components/CareersContent';
 
 export const metadata: Metadata = {
@@ -59,9 +60,10 @@ const jsonLd = {
 };
 
 export default function CareersPage() {
+  const nonce = headers().get('x-nonce') ?? undefined;
   return (
     <div className="subpage">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script nonce={nonce} suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <CareersContent />
     </div>
   );

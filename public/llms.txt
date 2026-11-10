@@ -13,7 +13,6 @@
 
 ## Pages
 - [Home](https://raasta.app/): Product overview, features, a sample researched trip, and the waitlist signup.
-- [Founders](https://raasta.app/founders): The people building Raasta — Armaan Parvez (Founder & CEO) and Siddharth Singh (Co-Founder) — and the story behind the company.
 - [Vision](https://raasta.app/vision): Company and investor vision — the problem in travel discovery, the opportunity in India, the current stage, and what Raasta is building.
 - [Careers](https://raasta.app/careers): Open early-stage roles (founding engineers plus content, growth and research; mostly remote and equity-based) and how to apply.
 - [Privacy Policy](https://raasta.app/privacy.html)

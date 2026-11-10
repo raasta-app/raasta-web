@@ -12,11 +12,10 @@ const securityHeaders = [
     value:
       'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=(), browsing-topics=()',
   },
-  {
-    key: 'Content-Security-Policy',
-    value:
-      "default-src 'self'; base-uri 'self'; object-src 'none'; frame-ancestors 'none'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://*.google-analytics.com https://*.analytics.google.com https://*.googletagmanager.com https://script.google.com https://script.googleusercontent.com; form-action 'self'",
-  },
+  // Content-Security-Policy is NOT set here: it needs a per-request nonce
+  // so Next's own inline hydration scripts pass CSP, so it's generated in
+  // middleware.ts instead (a static value here would block React hydration
+  // entirely — every script-src violation kills the RSC bootstrap script).
 ];
 
 const nextConfig = {
@@ -26,6 +25,12 @@ const nextConfig = {
   // cleanUrls + trailingSlash: false), so no rewrite/redirect config
   // is needed for that behaviour.
   async headers() {
+    const isDev = process.env.NODE_ENV === 'development';
+    // In dev, long-lived Cache-Control means the browser stops asking for
+    // these files at all after the first load, so edits to files in
+    // /public/assets (or a rebuilt /_next/static chunk) silently keep
+    // serving the stale cached copy until the cache expires or is cleared.
+    // Only apply the production caching strategy outside of dev.
     return [
       {
         source: '/(.*)',
@@ -34,13 +39,13 @@ const nextConfig = {
       {
         // static assets copied verbatim into /public/assets
         source: '/assets/:path*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800' }],
+        headers: [{ key: 'Cache-Control', value: isDev ? 'no-store' : 'public, max-age=604800' }],
       },
       {
         // Next's built-in bundled JS/CSS output — equivalent of the old
         // /css/(.*) and /js/(.*) cache rules from vercel.json.
         source: '/_next/static/:path*',
-        headers: [{ key: 'Cache-Control', value: 'public, max-age=86400' }],
+        headers: [{ key: 'Cache-Control', value: isDev ? 'no-store' : 'public, max-age=86400' }],
       },
     ];
   },

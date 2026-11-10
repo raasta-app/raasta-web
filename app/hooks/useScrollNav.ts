@@ -2,52 +2,56 @@
 
 import { type RefObject, useEffect } from 'react';
 
-/**
- * Home-page nav + progress-bar + hero parallax/fade, ported from the
- * `onScroll` handler in js/script.js. Toggles `.scrolled` / `.over-hero`
- * on the nav, scales the top progress bar, and parallaxes the hero
- * background/content while scrolling through it.
- */
-export function useScrollNav(
+function trackDirection(nav: HTMLElement, y: number, last: { y: number }) {
+  const delta = y - last.y;
+  if (Math.abs(delta) < 6) return;
+  const hide = delta > 0 && y > 140 && !document.body.classList.contains('menu-lock');
+  nav.classList.toggle('is-hidden', hide);
+  last.y = y;
+}
+
+export function useHomeScrollNav(
   navRef: RefObject<HTMLElement | null>,
   progressRef: RefObject<HTMLDivElement | null>,
-  heroRef: RefObject<HTMLElement | null>,
-  heroBgRef: RefObject<HTMLDivElement | null>,
-  heroContentRef: RefObject<HTMLDivElement | null>,
+  heroRef?: RefObject<HTMLElement | null>,
+  heroContentRef?: RefObject<HTMLElement | null>,
 ) {
   useEffect(() => {
-    const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     let ticking = false;
+    const last = { y: window.scrollY };
+    const darkEls = Array.from(document.querySelectorAll<HTMLElement>('[data-nav-dark]'));
 
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         const y = window.scrollY;
-        const hero = heroRef.current;
-        const heroH = hero ? hero.offsetHeight : window.innerHeight;
+        const heroH = heroRef?.current?.offsetHeight ?? 0;
+
         const nav = navRef.current;
-
-        const past = y > heroH - 120;
         if (nav) {
-          nav.classList.toggle('scrolled', past);
-          nav.classList.toggle('over-hero', !past);
+          nav.classList.toggle('scrolled', y > 8);
+
+          const line = nav.offsetHeight * 0.5;
+          const overDark = darkEls.some((el) => {
+            const r = el.getBoundingClientRect();
+            return r.top <= line && r.bottom > line + 40;
+          });
+          nav.classList.toggle('over-hero', overDark);
+
+          if (!nav.classList.contains('nav--route')) trackDirection(nav, y, last);
         }
 
-        const doc = document.documentElement;
-        const max = doc.scrollHeight - doc.clientHeight;
+        if (heroContentRef?.current && heroH > 0) {
+          const t = Math.min(1, y / (heroH * 0.62));
+          heroContentRef.current.style.opacity = String(Math.max(0, 1 - t));
+          heroContentRef.current.style.transform = `translate3d(0, ${(t * 46).toFixed(1)}px, 0)`;
+        }
+
         if (progressRef.current) {
+          const doc = document.documentElement;
+          const max = doc.scrollHeight - doc.clientHeight;
           progressRef.current.style.transform = `scaleX(${max > 0 ? y / max : 0})`;
-        }
-
-        if (y < heroH) {
-          if (!reduceMotion) {
-            if (heroBgRef.current) heroBgRef.current.style.transform = `translateY(${y * 0.22}px)`;
-            if (heroContentRef.current) heroContentRef.current.style.transform = `translateY(${y * 0.14}px)`;
-          }
-          if (heroContentRef.current) {
-            heroContentRef.current.style.opacity = String(Math.max(0, 1 - y / (heroH * 0.62)));
-          }
         }
         ticking = false;
       });
@@ -55,25 +59,28 @@ export function useScrollNav(
 
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
-    // refs are stable across renders; effect should run once on mount
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    window.addEventListener('resize', onScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+
   }, []);
 }
 
-/**
- * Sub-page nav + progress-bar: simpler `.scrolled` toggle past 8px,
- * ported from js/nav.js.
- */
 export function useSubpageScrollNav(navRef: RefObject<HTMLElement | null>, progressRef: RefObject<HTMLDivElement | null>) {
   useEffect(() => {
     let ticking = false;
+    const last = { y: window.scrollY };
     const onScroll = () => {
       if (ticking) return;
       ticking = true;
       requestAnimationFrame(() => {
         const y = window.scrollY || window.pageYOffset || 0;
-        if (navRef.current) navRef.current.classList.toggle('scrolled', y > 8);
+        if (navRef.current) {
+          navRef.current.classList.toggle('scrolled', y > 8);
+          trackDirection(navRef.current, y, last);
+        }
         if (progressRef.current) {
           const doc = document.documentElement;
           const max = doc.scrollHeight - doc.clientHeight;
@@ -89,6 +96,6 @@ export function useSubpageScrollNav(navRef: RefObject<HTMLElement | null>, progr
       window.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+
   }, []);
 }

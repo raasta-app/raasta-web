@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { headers } from 'next/headers';
 import VisionContent from '../components/VisionContent';
 
 export const metadata: Metadata = {
@@ -46,9 +47,10 @@ const jsonLd = {
 };
 
 export default function VisionPage() {
+  const nonce = headers().get('x-nonce') ?? undefined;
   return (
     <div className="subpage">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script nonce={nonce} suppressHydrationWarning type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <VisionContent />
     </div>
   );

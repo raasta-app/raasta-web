@@ -1,50 +1,74 @@
 import type { ReactNode } from 'react';
 
-type CurrentPage = 'founders' | 'vision' | 'careers';
+type CurrentPage = 'vision' | 'careers';
 
 interface FooterProps {
-  hand: string;
-  headline: ReactNode;
-  ctaHref: string;
-  ctaLabel: string;
-  /** Sub-pages show an extra "Company" column and widen the footer grid via `.subpage`. */
+  hand?: string;
+
+  headline?: ReactNode;
+  ctaHref?: string;
+  ctaLabel?: string;
+
+  sign?: ReactNode;
+
+  below?: ReactNode;
+
   showCompanyCol?: boolean;
   current?: CurrentPage;
-  /** Home page links are root-relative hashes (`#destinations`); sub-pages need `/#destinations`. */
+
   hashPrefix?: string;
 }
 
-export default function Footer({ hand, headline, ctaHref, ctaLabel, showCompanyCol, current, hashPrefix = '' }: FooterProps) {
+function FooterScene() {
+  return (
+    <div className="footer-scene" aria-hidden="true">
+      <img
+        src="/assets/footer-mountains.png"
+        alt=""
+        width={4096}
+        height={1458}
+        loading="lazy"
+        decoding="async"
+      />
+    </div>
+  );
+}
+
+export default function Footer({ hand, headline, ctaHref, ctaLabel, sign, below, showCompanyCol, current, hashPrefix = '' }: FooterProps) {
   const currentProp = (page: CurrentPage) => (page === current ? { 'aria-current': 'page' as const } : {});
   return (
     <footer className="footer">
-      <div className="wrap footer-sign">
-        <div className="footer-sign-copy">
-          <span className="hand">{hand}</span>
-          <h2 className="footer-headline">{headline}</h2>
+      {headline && (
+        <div className="wrap footer-sign">
+          <div className="footer-sign-copy">
+            {hand && <span className="hand">{hand}</span>}
+            <h2 className="footer-headline">{headline}</h2>
+            {below}
+          </div>
+          {sign ?? (
+            <a href={ctaHref} className="btn btn-primary btn-lg footer-cta">
+              {ctaLabel}
+            </a>
+          )}
         </div>
-        <a href={ctaHref} className="btn btn-primary btn-lg footer-cta">
-          {ctaLabel}
-        </a>
-      </div>
+      )}
       <div className="wrap footer-top">
         <div className="footer-brand">
           <a className="brand" href="/" aria-label="Raasta home">
             <img className="brand-logo" src="/assets/logo.svg" alt="Raasta" width={90} height={20} />
           </a>
-          <p>The intelligent travel app for India: curated trips and multi-stop journeys, scored for fit, with real budgets and day-by-day plans.</p>
+          <p>The complete guide to trips across India. Destinations and multi-stop circuits.</p>
         </div>
         <nav className="footer-cols" aria-label="Footer">
           <div className="footer-col">
             <h3>Explore</h3>
-            <a href={`${hashPrefix}#destinations`}>Destinations</a>
+            <a href={`${hashPrefix}#what`}>What we do</a>
             <a href={`${hashPrefix}#features`}>Features</a>
-            <a href={`${hashPrefix}#how`}>How it works</a>
+            <a href={`${hashPrefix}#join`}>Join the waitlist</a>
           </div>
           {showCompanyCol && (
             <div className="footer-col">
               <h3>Company</h3>
-              <a href="/founders" {...currentProp('founders')}>About</a>
               <a href="/vision" {...currentProp('vision')}>Vision</a>
               <a href="/careers" {...currentProp('careers')}>Careers</a>
             </div>
@@ -77,6 +101,7 @@ export default function Footer({ hand, headline, ctaHref, ctaLabel, showCompanyC
           in and for India <span aria-hidden="true">🇮🇳</span>
         </span>
       </div>
+      <FooterScene />
     </footer>
   );
 }
