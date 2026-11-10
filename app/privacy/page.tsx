@@ -1,24 +1,18 @@
 import type { Metadata } from 'next';
-import { LegalHeader, LegalFooter } from '../components/LegalChrome';
+import { LegalHeader, LegalFooter } from '@/components/LegalChrome';
+import JsonLd from '@/components/JsonLd';
+import { legalGraph } from '@/lib/schema';
+import { pageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Privacy Policy | Raasta',
-  description: 'Privacy Policy for Raasta, the intelligent travel app for India.',
-  alternates: { canonical: 'https://raasta.app/privacy' },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    siteName: 'Raasta',
-    title: 'Privacy Policy | Raasta',
-    description: 'How Raasta collects, uses and protects information when you visit the site or join the waitlist.',
-    url: 'https://raasta.app/privacy',
-    images: [{ url: 'https://raasta.app/assets/og.jpg' }],
-  },
-};
+const TITLE = 'Privacy Policy';
+const DESC = 'How Raasta collects, uses and protects your information when you visit the site or join the waitlist.';
+
+export const metadata: Metadata = pageMetadata('/privacy', TITLE, DESC, 'How Raasta collects, uses and protects information when you visit the site or join the waitlist.');
 
 export default function PrivacyPage() {
   return (
     <div className="legal-page">
+      <JsonLd data={legalGraph('/privacy', TITLE, DESC)} />
       <a className="skip-link" href="#legal-main">
         Skip to content
       </a>
@@ -29,7 +23,7 @@ export default function PrivacyPage() {
           <dl className="legal-meta">
             <div>
               <dt>Last updated</dt>
-              <dd>9 June 2026</dd>
+              <dd>11 November 2026</dd>
             </div>
             <div>
               <dt>Website</dt>
@@ -56,7 +50,7 @@ export default function PrivacyPage() {
             <a href="https://raasta.app" target="_blank" rel="noopener">
               https://raasta.app
             </a>{' '}
-            is a pre-launch landing page for a future India-focused trip intelligence app. At this stage, Raasta provides product information and a waitlist signup form.
+            is a pre-launch landing page for a future India-focused travel guide app. At this stage, Raasta provides product information and a waitlist signup form.
           </p>
           <p>Raasta does not currently offer bookings, payments, user accounts, subscriptions, marketplace services, community features, user-generated content, live location tracking, or travel support services.</p>
           <p>For this Privacy Policy, &quot;Raasta,&quot; &quot;we,&quot; &quot;us,&quot; and &quot;our&quot; mean Raasta, a pre-incorporation startup project operated by its founding team.</p>
@@ -66,9 +60,8 @@ export default function PrivacyPage() {
           <h3>1.1 Information you provide directly</h3>
           <p>When you join the Raasta waitlist, we collect:</p>
           <ul>
-            <li>your name</li>
             <li>your email address</li>
-            <li>your answer to &quot;How did you hear about us?&quot;</li>
+            <li>the invite code of the person who shared Raasta with you, if you joined through their link</li>
           </ul>
           <p>We use this information to manage the waitlist, understand how people discover Raasta, and send launch-related and early-access updates.</p>
           <p>We do not currently collect your phone number, payment information, account password, address, booking information, precise location, travel emergency information, or government identification information through the website.</p>
@@ -131,10 +124,10 @@ export default function PrivacyPage() {
           <h2>4. Google Analytics 4</h2>
           <p>Raasta uses Google Analytics 4 to measure website traffic and understand website performance.</p>
           <p>Google Analytics may use cookies or similar technologies to collect analytics information. This may include page views, device information, browser information, approximate location, referral source, and interaction data.</p>
-          <p>We use this information in an aggregated way to improve the website. We do not use Google Analytics to personally identify waitlist users by name.</p>
+          <p>We use this information in an aggregated way to improve the website. We do not use Google Analytics to personally identify waitlist users.</p>
 
-          <h2>5. Google Sheets</h2>
-          <p>Waitlist information, including name, email address, and how you heard about Raasta, may be stored in Google Sheets or related Google services used by the Raasta founding team to manage the waitlist.</p>
+          <h2>5. Waitlist Form Processing</h2>
+          <p>When you join the waitlist, your email address and invite code are sent through Web3Forms, a form processing service, which delivers them by email to the Raasta founding team so we can manage the waitlist.</p>
           <p>Access to the waitlist is intended to be limited to people working on Raasta who need access for launch communication, waitlist management, and understanding early user acquisition channels.</p>
 
           <h2>6. Cookies</h2>
@@ -146,7 +139,7 @@ export default function PrivacyPage() {
           <p>We may share limited information with service providers that help us operate the website and waitlist, including:</p>
           <ul>
             <li>Google Analytics, for website analytics</li>
-            <li>Google Sheets and related Google services, for waitlist storage</li>
+            <li>Web3Forms, for processing and delivering waitlist signups</li>
             <li>website hosting or infrastructure providers, for operating the website</li>
           </ul>
           <p>These services may process information only as needed to provide their services to us.</p>

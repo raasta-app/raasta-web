@@ -1,24 +1,18 @@
 import type { Metadata } from 'next';
-import { LegalHeader, LegalFooter } from '../components/LegalChrome';
+import { LegalHeader, LegalFooter } from '@/components/LegalChrome';
+import JsonLd from '@/components/JsonLd';
+import { legalGraph } from '@/lib/schema';
+import { pageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Terms of Use | Raasta',
-  description: 'Terms of Use for Raasta, the intelligent travel app for India.',
-  alternates: { canonical: 'https://raasta.app/terms' },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    siteName: 'Raasta',
-    title: 'Terms of Use | Raasta',
-    description: 'The terms that govern your use of the Raasta website and waitlist.',
-    url: 'https://raasta.app/terms',
-    images: [{ url: 'https://raasta.app/assets/og.jpg' }],
-  },
-};
+const TITLE = 'Terms of Use';
+const DESC = 'The terms that govern your use of the Raasta website and waitlist.';
+
+export const metadata: Metadata = pageMetadata('/terms', TITLE, DESC, 'The terms that govern your use of the Raasta website and waitlist.');
 
 export default function TermsPage() {
   return (
     <div className="legal-page">
+      <JsonLd data={legalGraph('/terms', TITLE, DESC)} />
       <a className="skip-link" href="#legal-main">
         Skip to content
       </a>
@@ -29,7 +23,7 @@ export default function TermsPage() {
           <dl className="legal-meta">
             <div>
               <dt>Last updated</dt>
-              <dd>9 June 2026</dd>
+              <dd>11 November 2026</dd>
             </div>
             <div>
               <dt>Website</dt>
@@ -58,10 +52,10 @@ export default function TermsPage() {
             .
           </p>
           <p>By using the website or joining the waitlist, you agree to these Terms.</p>
-          <p>Raasta is currently a pre-incorporation startup project. The website is a pre-launch landing page for a future India-focused trip intelligence app. At this stage, the website provides product information and a waitlist signup form only.</p>
+          <p>Raasta is currently a pre-incorporation startup project. The website is a pre-launch landing page for a future India-focused travel guide app. At this stage, the website provides product information and a waitlist signup form only.</p>
 
           <h2>1. About Raasta</h2>
-          <p>Raasta is being developed as a trip intelligence app intended to help travellers make clearer and more practical travel decisions.</p>
+          <p>Raasta is being developed as a travel guide app intended to help travellers make clearer and more practical travel decisions.</p>
           <p>The current website is only a landing page. It explains the product idea and allows visitors to join the waitlist for launch and early-access updates.</p>
           <p>Raasta does not currently provide:</p>
           <ul>
@@ -161,7 +155,7 @@ export default function TermsPage() {
           <p>Please do not send confidential information unless we have agreed in writing to receive it confidentially.</p>
 
           <h2>11. Third-Party Services</h2>
-          <p>The website may use or link to third-party services, including Google Analytics, Google Sheets, hosting providers, or external websites.</p>
+          <p>The website may use or link to third-party services, including Google Analytics, Web3Forms, hosting providers, or external websites.</p>
           <p>We do not control third-party services and are not responsible for their content, availability, security, terms, or privacy practices.</p>
           <p>Your use of third-party services may be governed by their own terms and policies.</p>
 

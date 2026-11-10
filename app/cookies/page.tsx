@@ -1,24 +1,18 @@
 import type { Metadata } from 'next';
-import { LegalHeader, LegalFooter } from '../components/LegalChrome';
+import { LegalHeader, LegalFooter } from '@/components/LegalChrome';
+import JsonLd from '@/components/JsonLd';
+import { legalGraph } from '@/lib/schema';
+import { pageMetadata } from '@/lib/site';
 
-export const metadata: Metadata = {
-  title: 'Cookie Policy | Raasta',
-  description: 'Cookie Policy for Raasta, the intelligent travel app for India.',
-  alternates: { canonical: 'https://raasta.app/cookies' },
-  robots: { index: true, follow: true },
-  openGraph: {
-    type: 'website',
-    siteName: 'Raasta',
-    title: 'Cookie Policy | Raasta',
-    description: 'How Raasta uses cookies and similar technologies on the website.',
-    url: 'https://raasta.app/cookies',
-    images: [{ url: 'https://raasta.app/assets/og.jpg' }],
-  },
-};
+const TITLE = 'Cookie Policy';
+const DESC = 'How Raasta uses cookies and similar technologies on the website, and how to control them.';
+
+export const metadata: Metadata = pageMetadata('/cookies', TITLE, DESC, 'How Raasta uses cookies and similar technologies on the website.');
 
 export default function CookiesPage() {
   return (
     <div className="legal-page">
+      <JsonLd data={legalGraph('/cookies', TITLE, DESC)} />
       <a className="skip-link" href="#legal-main">
         Skip to content
       </a>

@@ -1,28 +1,27 @@
 # Raasta
 
-> Raasta is the intelligent travel app for India, a curated library of trips and multi-stop journeys, each fully researched with real budgets, best seasons and routes. It is currently pre-launch (coming soon to iOS and Android); visitors can join the waitlist at https://raasta.app.
+> Raasta is the complete guide to offbeat India, short of booking. Each place comes with when to go, how to get there, what it costs, what to pack and what could go wrong, checked by a real team. It is currently pre-launch (coming soon to iOS and Android); visitors can join the waitlist at https://raasta.app.
 
 ## About
-- What it is: A trip-intelligence app for India that scores destinations and journeys on weather, budget, reach time and fit, never on popularity or ad spend.
-- What it gives travellers: Real all-in budgets, best time to go, multi-stop routes mapped stop by stop, packing and safety notes, and day-by-day plans.
+- What it is: A guide to the places across India that most travellers never hear of, with everything needed to actually go.
+- What it gives travellers: The best months to visit, how to get there by road or train, cost ranges per person, packing lists, permits and warnings, live weather, and tips from other travellers.
 - Status: Pre-launch landing page with a waitlist. It does not yet offer bookings, payments, user accounts, or live location tracking.
-- Coverage: Destinations across every Indian state and union territory, from Himalayan passes to southern coasts.
+- Coverage: Places across every Indian state and union territory, from Himalayan valleys to southern coasts.
 - Company: Raasta, a pre-incorporation startup based in Delhi, India.
 - Contact: hello@raasta.app
 - Social: Instagram https://www.instagram.com/raasta.app · LinkedIn https://www.linkedin.com/in/raasta-app-6367b2411/
 
 ## Pages
-- [Home](https://raasta.app/): Product overview, features, a sample researched trip, and the waitlist signup.
-- [Vision](https://raasta.app/vision): Company and investor vision — the problem in travel discovery, the opportunity in India, the current stage, and what Raasta is building.
-- [Careers](https://raasta.app/careers): Open early-stage roles (founding engineers plus content, growth and research; mostly remote and equity-based) and how to apply.
-- [Privacy Policy](https://raasta.app/privacy.html)
-- [Terms of Use](https://raasta.app/terms.html)
-- [Cookie Policy](https://raasta.app/cookies.html)
+- [Sitemap](https://raasta.app/sitemap.xml)
+- [Home](https://raasta.app/): What Raasta does, how it works, what is coming next, and the waitlist signup.
+- [Privacy Policy](https://raasta.app/privacy)
+- [Terms of Use](https://raasta.app/terms)
+- [Cookie Policy](https://raasta.app/cookies)
 
 ## FAQ
-- What is Raasta? An upcoming travel app for India that turns scattered trip research into clear answers: curated trips and multi-stop journeys with real budgets, the best time to go, routes and what to watch for.
+- What is Raasta? An upcoming travel app for India that shows you offbeat places and everything you need to go: when to visit, how to get there, cost ranges and what to watch for.
 - When will Raasta launch? It is in pre-launch, building toward an iOS and Android release. No fixed date yet; the waitlist is notified at launch.
 - How much will Raasta cost? Pricing is not finalised. Joining the waitlist is free.
-- What do I get by joining the waitlist? Launch and early-access updates by email, used only for Raasta updates (no spam).
-- Does Raasta book hotels or transport? No. It is a trip-intelligence app for deciding where, when and how to travel; it does not currently offer bookings, payments or accounts.
-- How is personal data handled? Only name, email and how you heard about Raasta are collected to manage the waitlist. See the Privacy Policy.
+- What do I get by joining the waitlist? One email when Raasta launches, and an Early badge on your Raasta profile when you sign up with the same email.
+- Does Raasta book hotels or transport? No. It is what you check before you book anything; it does not currently offer bookings, payments or accounts.
+- How is personal data handled? Only your email address is collected to manage the waitlist. See the Privacy Policy.
