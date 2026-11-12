@@ -139,6 +139,7 @@ export default function PrivacyPage() {
           <p>We may share limited information with service providers that help us operate the website and waitlist, including:</p>
           <ul>
             <li>Google Analytics, for website analytics</li>
+            <li>Vercel Web Analytics, for cookieless, aggregated visit counts</li>
             <li>Web3Forms, for processing and delivering waitlist signups</li>
             <li>website hosting or infrastructure providers, for operating the website</li>
           </ul>

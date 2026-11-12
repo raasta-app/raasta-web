@@ -13,6 +13,7 @@ declare global {
 
 export default function Analytics() {
   useEffect(() => {
+    if (window.gtag) return;
     const CONSENT_KEY = 'raasta_consent';
     let saved: string | null = null;
     try {
@@ -83,7 +84,10 @@ export default function Analytics() {
           localStorage.setItem(CONSENT_KEY, value);
         } catch {
         }
-        if (value === 'granted') gtag('consent', 'update', { analytics_storage: 'granted' });
+        if (value === 'granted') {
+          gtag('consent', 'update', { analytics_storage: 'granted' });
+          gtag('event', 'page_view', { page_location: location.href, page_title: document.title });
+        }
         bar.classList.remove('rc-in');
         setTimeout(() => bar.remove(), 400);
       }

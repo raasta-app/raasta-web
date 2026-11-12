@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from 'next';
+import { Analytics as VercelAnalytics } from '@vercel/analytics/next';
 import Analytics from '@/components/Analytics';
 import { body, display } from '@/lib/fonts';
 import { KEYWORDS, OG_IMAGE, SHARE_DESC, SITE_DESC, SITE_NAME, SITE_TITLE, SITE_URL } from '@/lib/site';
@@ -67,6 +68,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         {children}
         <Analytics />
+        <VercelAnalytics />
       </body>
     </html>
   );
