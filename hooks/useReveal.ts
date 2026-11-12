@@ -56,7 +56,7 @@ export function useReveal() {
           obs.unobserve(entry.target);
         }
       },
-      { threshold: 0, rootMargin: '0px 0px -18% 0px' },
+      { threshold: 0, rootMargin: '0px 0px -6% 0px' },
     );
 
     for (const lead of Array.from(bands.keys())) {

@@ -15,14 +15,20 @@ import Preloader from './Preloader';
 import { useScrollNav } from '@/hooks/useScrollNav';
 import { HERO_IMAGE } from '@/lib/site';
 import { useReveal } from '@/hooks/useReveal';
+import { usePauseOffscreen } from '@/hooks/usePauseOffscreen';
 
-const BLUR = [24, 8, 2.7, 0.9, 0.3];
+const BLUR = [
+  { src: '/assets/hero-kashmir-meadow-blur-3.jpg', k: 0.44 },
+  { src: '/assets/hero-kashmir-meadow-blur-8.jpg', k: 0.22 },
+  { src: '/assets/hero-kashmir-meadow-blur-24.jpg', k: 0 },
+];
 
 export default function HomeContent() {
   const navRef = useRef<HTMLElement>(null);
 
   useScrollNav(navRef);
   useReveal();
+  usePauseOffscreen('.soon-marquee, .close-perk, .close-form');
 
   return (
     <>
@@ -46,15 +52,15 @@ export default function HomeContent() {
               quality={90}
               sizes="100vw"
             />
+            {BLUR.map((b) => (
+              <span key={b.src} className="hero-blur" style={{ ['--k' as string]: b.k }} aria-hidden="true">
+                <Image className="hero-img" src={b.src} alt="" fill loading="eager" quality={70} sizes="100vw" />
+              </span>
+            ))}
           </div>
 
           <span className="hero-veil hero-veil--t" aria-hidden="true" />
           <span className="hero-veil hero-veil--b" aria-hidden="true" />
-          <div className="hero-blur" aria-hidden="true">
-            {BLUR.map((b, i) => (
-              <span key={b} style={{ ['--b' as string]: `${b}px`, ['--s' as string]: `${i * 22}%` }} />
-            ))}
-          </div>
 
           <div className="hero-layer wrap">
             <p className="hero-eye">Far from the crowds</p>

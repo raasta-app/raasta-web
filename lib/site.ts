@@ -45,10 +45,10 @@ export const OG_IMAGE = {
 };
 
 export const HERO_IMAGE = {
-  url: '/assets/hero-valley.jpg',
-  width: 6000,
-  height: 4000,
-  alt: 'A meadow town ringed by pine forest below snow-capped peaks in Kashmir',
+  url: '/assets/hero-kashmir-meadow.jpg',
+  width: 3840,
+  height: 2560,
+  alt: 'A trekker resting on a green meadow below cloud-wrapped peaks in Kashmir',
 };
 
 export const SOCIAL = {

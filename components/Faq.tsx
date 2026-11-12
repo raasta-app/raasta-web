@@ -15,16 +15,8 @@ export default function Faq() {
             Questions you&rsquo;d <span>probably ask.</span>
           </h2>
           <p className="comm-deck reveal" data-d="1">
-            Something else on your mind? Write to us. A real person reads every email.
+            Something else on your mind? <a href={`mailto:${EMAIL}`}>Write to us</a>. We read every email.
           </p>
-          <a className="faq-ask reveal" data-d="2" href={`mailto:${EMAIL}`}>
-            {EMAIL}
-            <i aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M8 16 16 8M16 8H9.5M16 8v6.5" />
-              </svg>
-            </i>
-          </a>
         </div>
 
         <ul className="faq-list">

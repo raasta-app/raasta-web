@@ -332,7 +332,13 @@ export default function WaitlistForm({ variant, inputId }: { variant: 'hero' | '
               aria-describedby={`${id}-note`}
             />
             <button type="submit" className={`btn btn-dark${status === 'sending' ? ' is-loading' : ''}`} disabled={status === 'sending'}>
-              {status === 'sending' ? 'Joining' : 'Join the waitlist'}
+              {status === 'sending' ? (
+                'Joining'
+              ) : (
+                <>
+                  Join<span className="wl-btn-more"> the waitlist</span>
+                </>
+              )}
             </button>
           </div>
           <p className={`wl-note${error ? ' is-err' : ''}`} id={`${id}-note`} aria-live="polite">

@@ -26,8 +26,8 @@
   --m-2: 0.28s;
   --m-3: 0.5s;
   --m-4: 0.9s;
-  --m-reveal: 1.1s;
-  --stagger: 0.09s;
+  --m-reveal: 0.8s;
+  --stagger: 0.06s;
 }
 
 * {
