@@ -7,6 +7,7 @@ const LINKS = [
     l: [
       { t: 'What we do', href: '#what' },
       { t: 'How it works', href: '#features' },
+      { t: 'FAQ', href: '#faq' },
       { t: 'Join the waitlist', href: '#join' },
     ],
   },
@@ -31,7 +32,7 @@ export default function Footer() {
   return (
     <footer className="footer">
       <div className="footer-scene" aria-hidden="true">
-        <Image src="/assets/footer-mountains.png" alt="" width={735} height={304} unoptimized />
+        <Image src="/assets/footer-mountains.png" alt="Snow-capped Himalayan peaks" width={735} height={304} unoptimized />
       </div>
 
       <div className="footer-night">

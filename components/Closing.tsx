@@ -13,11 +13,20 @@ export default function Closing() {
       <div className="wrap close-in">
         <div className="close-who reveal">
           <span className="close-faces" aria-hidden="true">
-            <Image src="/assets/armaan-parvez-3.jpg" alt="" width={480} height={480} sizes="34px" quality={85} />
-            <Image src="/assets/siddharth.jpg" alt="" width={256} height={320} sizes="34px" quality={85} />
+            <Image src="/assets/armaan-parvez-3.jpg" alt="Armaan Parvez, founder of Raasta" width={480} height={480} sizes="34px" quality={85} />
+            <Image src="/assets/siddharth.jpg" alt="Siddharth Singh, co-founder of Raasta" width={256} height={320} sizes="34px" quality={85} />
           </span>
           <span>
-            <b>Armaan &amp; Siddharth</b>, founders
+            <b>
+              <a href="https://armaanux.in" target="_blank" rel="noopener">
+                Armaan
+              </a>{' '}
+              &amp;{' '}
+              <a href="https://sidonweb.com" target="_blank" rel="noopener">
+                Siddharth
+              </a>
+            </b>
+            , founders
           </span>
         </div>
 
@@ -34,11 +43,11 @@ export default function Closing() {
                 ))}
                 <span className="coin-rim" />
                 <span className="coin-face">
-                  <img src="/assets/badge-coin.svg" alt="" width={240} height={240} loading="lazy" decoding="async" />
+                  <img src="/assets/badge-coin.svg" alt="Raasta Early badge" width={240} height={240} loading="lazy" decoding="async" />
                   <span className="coin-gloss" />
                 </span>
                 <span className="coin-face coin-back">
-                  <img src="/assets/badge-coin.svg" alt="" width={240} height={240} loading="lazy" decoding="async" />
+                  <img src="/assets/badge-coin.svg" alt="Raasta Early badge" width={240} height={240} loading="lazy" decoding="async" />
                 </span>
               </span>
             </span>

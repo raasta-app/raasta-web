@@ -8,6 +8,7 @@
 - Status: Pre-launch landing page with a waitlist. It does not yet offer bookings, payments, user accounts, or live location tracking.
 - Coverage: Places across every Indian state and union territory, from Himalayan valleys to southern coasts.
 - Company: Raasta, a pre-incorporation startup based in Delhi, India.
+- Founder: Armaan Parvez. Co-founder: Siddharth Singh.
 - Contact: hello@raasta.app
 - Social: Instagram https://www.instagram.com/raasta.app · LinkedIn https://www.linkedin.com/in/raasta-app-6367b2411/
 
@@ -20,8 +21,11 @@
 
 ## FAQ
 - What is Raasta? An upcoming travel app for India that shows you offbeat places and everything you need to go: when to visit, how to get there, cost ranges and what to watch for.
-- When will Raasta launch? It is in pre-launch, building toward an iOS and Android release. No fixed date yet; the waitlist is notified at launch.
-- How much will Raasta cost? Pricing is not finalised. Joining the waitlist is free.
-- What do I get by joining the waitlist? One email when Raasta launches, and an Early badge on your Raasta profile when you sign up with the same email.
-- Does Raasta book hotels or transport? No. It is what you check before you book anything; it does not currently offer bookings, payments or accounts.
+- Why not just search the web? You end up with many tabs and no idea which one is current. Raasta puts the whole trip in one place: when to go, what it costs, how to reach, what to pack, and what to watch out for.
+- Is Raasta a booking app? No, on purpose. It is what you check before you book anything; once a place is right for you, book wherever you like.
+- How is the information checked? Every place is checked by the Raasta team before it goes live. After that, people who have been there add tips and corrections, so each place gets sharper over time.
+- What will a trip cost? Honest ranges, split into getting there from your city and what you spend once you are there. They are for planning, not a quote.
+- Do I need an account to browse? No. You only sign up to save a place or join the conversation.
+- When and where can I download it? The aim is to launch before Q2 2027 on the Play Store and the App Store. There is no promised date yet; the waitlist is notified the moment it is live.
+- What do I get by joining the waitlist? One email the day the app is ready, and nothing in between. Sign up in the app with the same email to get an Early badge on your profile. Joining is free.
 - How is personal data handled? Only your email address is collected to manage the waitlist. See the Privacy Policy.

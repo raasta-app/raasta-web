@@ -1,15 +1,15 @@
 import Image from 'next/image';
 
 const TOKENS = {
-  road: { src: '/assets/pill-road.jpg', w: 720, h: 480, pos: '50% 50%' },
-  trail: { src: '/assets/pill-trail.jpg', w: 720, h: 405, pos: '50% 15%' },
+  road: { src: '/assets/pill-road.jpg', w: 720, h: 480, pos: '50% 50%', alt: 'A mountain road winding down a valley' },
+  trail: { src: '/assets/pill-trail.jpg', w: 720, h: 405, pos: '50% 15%', alt: 'Trekkers walking a snowy trail' },
 };
 
 function Tok({ k }: { k: keyof typeof TOKENS }) {
   const t = TOKENS[k];
   return (
     <span className="stok" aria-hidden="true">
-      <Image src={t.src} alt="" width={t.w} height={t.h} sizes="120px" quality={85} style={{ objectPosition: t.pos }} />
+      <Image src={t.src} alt={t.alt} width={t.w} height={t.h} sizes="120px" quality={85} style={{ objectPosition: t.pos }} />
     </span>
   );
 }

@@ -1,9 +1,10 @@
+import { FAQ } from './faq';
 import { EMAIL, HERO_IMAGE, OG_IMAGE, SITE_DESC, SITE_NAME, SITE_TAGLINE, SITE_URL, SOCIAL, absolute } from './site';
 
 const ORG_ID = `${SITE_URL}/#organization`;
 const SITE_ID = `${SITE_URL}/#website`;
 
-export const organization = {
+const organization = {
   '@type': 'Organization',
   '@id': ORG_ID,
   name: SITE_NAME,
@@ -24,6 +25,8 @@ export const organization = {
   email: EMAIL,
   contactPoint: { '@type': 'ContactPoint', email: EMAIL, contactType: 'customer support', availableLanguage: ['English', 'Hindi'] },
   foundingLocation: { '@type': 'Place', name: 'Delhi, India' },
+  founder: { '@type': 'Person', '@id': `${SITE_URL}/#founder`, name: 'Armaan Parvez', jobTitle: 'Founder', url: 'https://armaanux.in', sameAs: ['https://armaanux.in'], worksFor: { '@id': ORG_ID } },
+  employee: { '@type': 'Person', '@id': `${SITE_URL}/#cofounder`, name: 'Siddharth Singh', jobTitle: 'Co-founder', url: 'https://sidonweb.com', sameAs: ['https://sidonweb.com'], worksFor: { '@id': ORG_ID } },
   areaServed: { '@type': 'Country', name: 'India' },
   knowsAbout: [
     'Offbeat travel in India',
@@ -48,7 +51,7 @@ export const website = {
   publisher: { '@id': ORG_ID },
 };
 
-export function webPage(path: string, name: string, description: string, extra: Record<string, unknown> = {}) {
+function webPage(path: string, name: string, description: string, extra: Record<string, unknown> = {}) {
   return {
     '@type': 'WebPage',
     '@id': `${absolute(path)}#webpage`,
@@ -63,7 +66,7 @@ export function webPage(path: string, name: string, description: string, extra: 
   };
 }
 
-export function breadcrumbs(items: { name: string; path: string }[]) {
+function breadcrumbs(items: { name: string; path: string }[]) {
   return {
     '@type': 'BreadcrumbList',
     itemListElement: items.map((it, i) => ({ '@type': 'ListItem', position: i + 1, name: it.name, item: absolute(it.path) })),
@@ -86,6 +89,13 @@ export const homeGraph = {
       image: absolute(OG_IMAGE.url),
       keywords: 'offbeat places in India, India travel guide, best time to visit, how to reach, trip cost',
     }),
+    {
+      '@type': 'FAQPage',
+      '@id': `${SITE_URL}/#faq`,
+      isPartOf: { '@id': `${absolute('/')}#webpage` },
+      inLanguage: 'en-IN',
+      mainEntity: FAQ.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+    },
   ],
 };
 

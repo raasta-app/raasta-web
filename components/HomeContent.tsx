@@ -9,7 +9,9 @@ import WhatWeDo from './WhatWeDo';
 import HowRight from './HowRight';
 import Features from './Features';
 import ComingNext from './ComingNext';
+import Faq from './Faq';
 import Closing from './Closing';
+import Preloader from './Preloader';
 import { useScrollNav } from '@/hooks/useScrollNav';
 import { HERO_IMAGE } from '@/lib/site';
 import { useReveal } from '@/hooks/useReveal';
@@ -24,6 +26,7 @@ export default function HomeContent() {
 
   return (
     <>
+      <Preloader />
       <div className="statusbar-fill" aria-hidden="true" />
       <a className="skip-link" href="#main">
         Skip to content
@@ -80,6 +83,7 @@ export default function HomeContent() {
         <HowRight />
         <Features />
         <ComingNext />
+        <Faq />
       </main>
 
       <Closing />
